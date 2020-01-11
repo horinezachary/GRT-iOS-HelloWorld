@@ -72,12 +72,12 @@ class PredictionViewController: UIViewController {
             let userAlert = UIAlertController(title: "Error", message: "Couldn't load pipeline", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
             userAlert.addAction(cancel)
-            self.present(userAlert, animated: true, completion: { _ in })
+            self.present(userAlert, animated: true, completion: { [weak self] in })
         }
         
         if classificationDataResult == false {
             let userAlert = UIAlertController(title: "Error", message: "Couldn't load classification data", preferredStyle: .alert)
-            self.present(userAlert, animated: true, completion: { _ in })
+            self.present(userAlert, animated: true, completion: { [weak self] in })
             let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
             userAlert.addAction(cancel)
         }

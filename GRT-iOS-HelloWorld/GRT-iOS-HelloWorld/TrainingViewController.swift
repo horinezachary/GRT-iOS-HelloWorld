@@ -77,11 +77,11 @@ class TrainingViewController: UIViewController {
         })
     }
     
-    func TrainBtnPressed(_ sender: Any) {
+    @objc func TrainBtnPressed(_ sender: Any) {
         trainButton.isSelected = true
     }
     
-    func TrainBtnReleased(_ sender: Any) {
+    @objc func TrainBtnReleased(_ sender: Any) {
         trainButton.isSelected = false
     }
   
@@ -97,7 +97,7 @@ class TrainingViewController: UIViewController {
         let pipelineSaveResult = self.pipeline?.save(pipelineURL)
         if !pipelineSaveResult! {
             let userAlert = UIAlertController(title: "Error", message: "Failed to save pipeline", preferredStyle: .alert)
-            self.present(userAlert, animated: true, completion: { _ in })
+            self.present(userAlert, animated: true, completion: { [weak self] in })
             let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
             userAlert.addAction(cancel)
         }
@@ -111,7 +111,7 @@ class TrainingViewController: UIViewController {
         
         if !classificationSaveResult! {
             let userAlert = UIAlertController(title: "Error", message: "Failed to save classification data", preferredStyle: .alert)
-            self.present(userAlert, animated: true, completion: { _ in })
+            self.present(userAlert, animated: true, completion: { [weak self] in })
             let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
             userAlert.addAction(cancel)
         }
